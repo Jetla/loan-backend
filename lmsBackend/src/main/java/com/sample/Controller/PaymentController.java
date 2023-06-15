@@ -40,8 +40,5 @@ public class PaymentController {
 	{
 		return new ResponseEntity<List<Payment>>(paymentService.getPayments(), HttpStatus.OK);
 	}
-	@GetMapping("/customer/{id}")
-	public ResponseEntity<List<Payment>> getpaymentsByCustomerId(@PathVariable int id) {
-		return new ResponseEntity<List<Payment>>(paymentService.getpaymentsByCustomerId(id), HttpStatus.OK);
-	}
+
 }

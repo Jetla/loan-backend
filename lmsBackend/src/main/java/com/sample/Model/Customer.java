@@ -41,8 +41,7 @@ public class Customer implements Serializable {
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY,targetEntity=Loan.class)
 	private List<Loan> loans = new ArrayList<Loan>();
 	
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY,targetEntity=Loan.class)
-	private List<Payment> payments = new ArrayList<Payment>();
+	
 
 	public Customer() {
 
@@ -137,14 +136,7 @@ public class Customer implements Serializable {
 		this.loans = loans;
 	}
 	
-	@JsonManagedReference
-	public List<Payment> getPayments() {
-		return payments;
-	}
 
-	public void setPayments(List<Payment> payments) {
-		this.payments = payments;
-	}
 
 	
 
@@ -152,7 +144,7 @@ public class Customer implements Serializable {
 	public String toString() {
 		return "Customer [id=" + id + ", fname=" + fname + ", lname=" + lname + ", gender=" + gender + ", phone="
 				+ phone + ", email=" + email + ", password=" + password + ", salary=" + salary + ", adhaar=" + adhaar
-				+ ", pan=" + pan + ", loans=" + loans + ", payments=" + payments + "]";
+				+ ", pan=" + pan + ", loans=" + loans + "]";
 	}
 
 	// the method below will add Loan to LoansList
@@ -161,7 +153,7 @@ public class Customer implements Serializable {
 		loan.setCustomer(this); // this will avoid nested cascade
 		this.getLoans().add(loan);
 	}
-	public Customer(int i, String jsonString, String string, String string2, long l, String string3,  String string5, int j, long m, String string6, String string7) {
+	public Customer(int i, String jsonString, String string, String string2, long l, String string3,  String string5, int j, long m, String string6) {
 		ObjectMapper objectMapper=new ObjectMapper();
 		try
 		{
@@ -177,18 +169,12 @@ public class Customer implements Serializable {
 			this.adhaar=customer.getAdhaar();
 			this.pan=customer.getPan();
 			this.loans=customer.getLoans();
-			this.payments=customer.getPayments();
 		}
 		catch(IOException e) {
 			System.out.println(e);
 		}
 	}
 
-	public void toPay(Payment payment) {
-		// TODO Auto-generated method stub
-		payment.setCustomer(this);
-		this.getPayments().add(payment);
-		
-	}
+	
 }
 

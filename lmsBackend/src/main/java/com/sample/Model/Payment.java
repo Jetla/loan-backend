@@ -21,13 +21,7 @@ public class Payment {
 	private double totalAmt;
 	private int duration;
 	private double monthlyEMI;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id")//,insertable = false, updatable = false)
-	//@JoinColumns({
-	  //  @JoinColumn(name="firstName", referencedColumnName="fname"),
-	    //@JoinColumn(name="LastName", referencedColumnName="lname")
-	  //})
-	private Customer customer;
+	
 	
 	public Payment() {
 		super();
@@ -57,19 +51,15 @@ public class Payment {
 	public void setMonthlyEMI(double monthlyEMI) {
 		this.monthlyEMI = monthlyEMI;
 	}
-	@JsonBackReference
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	
+	//@JsonBackReference
 	@Override
 	public String toString() {
 		return "Payment [paymentId=" + paymentId + ", totalAmt=" + totalAmt + ", duration=" + duration + ", monthlyEMI="
-				+ monthlyEMI + ", customer=" + customer + "]";
+				+ monthlyEMI + "]";
 	}
+	
+	
+	
 //	public Payment(int paymentId, double totalAmt, int duration, double monthlyEMI, Customer string1) {
 //		super();
 //		this.paymentId = paymentId;

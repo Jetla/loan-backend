@@ -13,7 +13,7 @@ public interface iPaymentService {
 
 	public List<Payment> getPayments();
 
-	public List<Payment> getpaymentsByCustomerId(int id);
+//	public List<Payment> getpaymentsByCustomerId(int id);
 
 
 }

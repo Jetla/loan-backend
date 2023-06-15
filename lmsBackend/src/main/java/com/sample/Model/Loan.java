@@ -30,6 +30,7 @@ public class Loan implements Serializable {
 	private int loanId;
 	private double loanAmt;
 	private String loanType;
+	private double interest;
 	private int duration;
 	private double monthlyEMI;
 
@@ -70,6 +71,15 @@ public class Loan implements Serializable {
 		this.loanType = loanType;
 	}
 
+	
+	public double getInterest() {
+		return interest;
+	}
+
+	public void setInterest(double interest) {
+		this.interest = interest;
+	}
+
 	public int getDuration() {
 		return duration;
 	}
@@ -94,11 +104,25 @@ public class Loan implements Serializable {
 		this.customer = customer;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Loan [loanId=" + loanId + ", loanAmt=" + loanAmt + ", loanType=" + loanType + ", duration=" + duration
-				+ ", monthlyEMI=" + monthlyEMI + ", customer=" + customer + "]";
+		return "Loan [loanId=" + loanId + ", loanAmt=" + loanAmt + ", loanType=" + loanType + ", interest=" + interest
+				+ ", duration=" + duration + ", monthlyEMI=" + monthlyEMI + ", customer=" + customer + "]";
 	}
+
+	public Loan(int loanId, double loanAmt, String loanType, double interest, int duration, double monthlyEMI,
+			Customer customer) {
+		super();
+		this.loanId = loanId;
+		this.loanAmt = loanAmt;
+		this.loanType = loanType;
+		this.interest = interest;
+		this.duration = duration;
+		this.monthlyEMI = monthlyEMI;
+		this.customer = customer;
+	}
+
 	public Loan(String jsonString) {
 		ObjectMapper objectMapper=new ObjectMapper();
 		try
